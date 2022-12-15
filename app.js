@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const app = express();
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -20,8 +21,11 @@ const User = require("./models/user");
 const mongoSanitize = require("express-mongo-sanitize");
 // const helmet = require("helmet");
 
+// const dbUrl = process.env.DB_URL;
+const dbUrl = "mongodb://localhost:27017/yelp-camp";
+//mongodb://localhost:27017/yelp-camp"
 async function main() {
-  await mongoose.connect("mongodb://localhost:27017/yelp-camp");
+  await mongoose.connect(dbUrl);
 }
 main().then(() => console.log("Connected to yelp-camp db"));
 main().catch((err) => console.log("AN ERROR!", err));
@@ -34,8 +38,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  touchAfter: 24 * 60 * 60,
+});
+
+store.on("error", (e) => {
+  console.log("session store error", e);
+});
+
 const sessionConfig = {
-  name: "dontstealmycookie",
+  store,
+  name: "session",
   secret: "thisisabadsecret",
   resave: false,
   saveUninitialized: true,
