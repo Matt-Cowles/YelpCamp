@@ -49,11 +49,11 @@ const seedDB = async () => {
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea qui, corrupti omnis eum quaerat, aspernatur quia nesciunt odio, deleniti accusantium dicta. Maxime illum alias cumque.",
       images: [
         {
-          url: "https://res.cloudinary.com/dfuw8n204/image/upload/v1662505782/YelpCamp/hgvtirh9vmtemuq7nxyl.png",
+          url: "https://res.cloudinary.com/dfuw8n204/image/upload/v1671079544/YelpCamp/dave_hoefler_a3e7yEtQxJs_unsplash_e6c5581d-cdd7-44d0-b248-4f0917acf2f9_yfvlrj.jpg",
           filename: "YelpCamp/hgvtirh9vmtemuq7nxyl",
         },
         {
-          url: "https://res.cloudinary.com/dfuw8n204/image/upload/v1662505782/YelpCamp/njirba8gevsrxhikyi3o.png",
+          url: "https://res.cloudinary.com/dfuw8n204/image/upload/v1671079645/YelpCamp/640px-Tent_camping_along_the_Sulayr_trail_in_La_Taha_2C_Sierra_Nevada_National_Park__28DSCF5147_29_qxsx3p.jpg",
           filename: "YelpCamp/njirba8gevsrxhikyi3o",
         },
       ],
